@@ -27,18 +27,15 @@ export class UserController {
       console.log('Register request received with body:', req.body);
       const { email, password, name } = req.body;
 
-      // Check if email exists in memory store
       if (Array.from(users.values()).some((user) => user.email === email)) {
         res.status(400).json({ message: 'Email already registered' });
         return;
       }
 
-      // Create in-memory user directly instead of trying database first
       const hashedPassword = await bcrypt.hash(password, 10);
       const id = generateId();
       const now = new Date();
 
-      // Create user in memory
       const user = {
         id,
         email,
@@ -77,7 +74,6 @@ export class UserController {
       console.log('Login request received with body:', req.body);
       const { email, password } = req.body;
 
-      // First check in-memory store
       const memoryUser = Array.from(users.values()).find(
         (user) => user.email === email
       );
