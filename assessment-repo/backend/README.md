@@ -21,12 +21,12 @@ Example API structure:
 
 ```typescript
 // Example endpoint structure
-import { Router } from "express";
-import { validateTask } from "../middleware/validation";
+import { Router } from 'express';
+import { validateTask } from '../middleware/validation';
 
 const router = Router();
 
-router.post("/tasks", validateTask, async (req, res) => {
+router.post('/tasks', validateTask, async (req, res) => {
   // Implementation
 });
 
@@ -58,7 +58,7 @@ services:
       POSTGRES_USER: developer
       POSTGRES_PASSWORD: localdev
     ports:
-      - "5432:5432"
+      - '5432:5432'
 ```
 
 Requirements:
